@@ -1,0 +1,41 @@
+body{
+    background-color: brown;
+}
+span{
+    color: red;
+}
+.lista1{
+    background-color: blue;
+}
+
+.lista2{
+    background-color:red;
+}
+.lista3{
+    background-color: green;
+}
+
+.p1{
+    border: 3px solid red;
+}
+.p2{
+    border: 3px dotted green;
+}
+.p3{
+    border: 4px double green;
+}
+.p4{
+    border: 4px groove green;
+}
+.p5{
+    border: 4px ridge green;
+}
+.p6{
+    border: 4px inset green;
+}
+.p7{
+    border: 4px outset green;
+}
+.p8{
+    border: 4px dashed darkblue;
+}

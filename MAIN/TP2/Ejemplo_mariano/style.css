@@ -1,0 +1,16 @@
+footer{
+    font-style: italic;
+}
+
+body{
+    background-color: rgb(55, 55, 209);
+}
+
+h2{
+    color: aqua;
+    text-decoration: underline;
+}
+
+table{
+    padding: 30px
+}

@@ -1,0 +1,9 @@
+section{
+    display: flex;
+    align-items: center;
+}
+p{
+    font-size: 20px;
+    margin-top: 0;
+    margin-left: 10px;
+}

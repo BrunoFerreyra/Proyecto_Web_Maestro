@@ -1,0 +1,101 @@
+body {
+    background-color: rgb(235, 128, 35);
+}
+
+.title{
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+}
+.subtitulo{
+    text-align: center;
+}
+table{
+    width: 500px;
+    border:5px #000 solid;
+    background-color: gray;
+    text-align: center;
+    border-collapse: collapse;
+    margin: auto;/* Centra la tabla horizontalmente */
+
+
+}
+td{
+    border: 1px black solid;
+    padding: 5px;
+}
+
+th{
+    
+    background-color: lawngreen;
+    /* // */
+    width: 30%;
+    height: 40px;
+    text-align: center;
+    border: 3px black solid;
+}
+
+.Ejercicio{
+    background-color: aqua;
+    
+    padding: 15px; border-radius: 10px;
+    border: 2px solid black; 
+    width: 80%; margin: auto;
+}
+
+header{
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-style: italic;
+}
+.parrafo_decorado{
+    background-color: bisque;
+    
+    padding: 15px; border-radius: 10px;
+    border: 2px solid black; 
+    width: 80%; margin: auto;
+
+}
+
+nav{
+    box-sizing: border-box;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 2px solid black; 
+    background-color: #333;
+}
+nav a {
+    color: white; /*  Texto blanco (viene azul feito) */ 
+    text-decoration: none; /* Quita el subrayado */
+    Margin: 0 15px ; 
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.4s ease-in-out;
+}
+nav a:hover{
+    color: rgb(235, 128, 35);
+}
+a{
+    color: black;
+    transition: color 0.4s ease-in;
+}
+td a:hover{
+    color: lightgreen;
+}
+/* Version diferente
+a:hover{
+    color:lawngreen ;
+}
+nav a {
+    display: inline-block;
+    background-color: #555;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;  /* Bordes redondeados 
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #ff6600;
+}
+*/
+

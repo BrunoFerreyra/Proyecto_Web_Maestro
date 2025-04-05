@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!-- saved from url=(0059)blob:https://codi.link/e715d3a4-97a2-414e-82a6-2fb90686d6a7 -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style id="preview-style">
+      
+    </style>
+    <script>
+    const customConsole = (w) => {
+      const pushToConsole = (payload, type) => {
+        w.parent.postMessage({
+          console: {
+            payload: payload,
+            type:    type
+          }
+        }, "*")
+      }
+
+      pushToConsole("clear", "system")
+
+      w.onerror = (message, url, line, column) => {
+        const DEFAULT_LINE_HEIGHT = 53
+        const htmlLines = 19
+        const cssLines = 1
+        const fixedLine = line - DEFAULT_LINE_HEIGHT - htmlLines - cssLines
+        pushToConsole({line:fixedLine, column, message}, "error")
+      }
+
+      const console = {
+        log: function(...args){
+          pushToConsole(args, "log:log")
+        },
+        error: function(...args){
+          pushToConsole(args, "log:error")
+        },
+        warn: function(...args){
+          pushToConsole(args, "log:warn")
+        },
+        info: function(...args){
+          pushToConsole(args, "log:info")
+        }
+      }
+
+      window.console = { ...window.console, ...console }
+    }
+
+    if (window.parent){
+      customConsole(window)
+    }
+  </script>
+  </head>
+  <body style="background-color: gray; color: #990000">
+    
+
+  <header> 
+    <h1 style="text-align: center">Algebra y Greometria</h1>
+  </header>
+  
+  <section>
+    <h1>Programa analitico</h1>
+    <article>
+      <i><h1>I: Matrices</h1></i>
+      <p>Sistemas de ecuaciones lineales - Sistemas equivalentes - Matrices</p>
+    </article>
+    <article>
+      <i><h1>II: Determinantes</h1></i>
+      <b><p>Determinante de una matriz - de los determinantes - Regla de cramer</p></b>
+    </article>
+  </section>
+  <footer><i>Archivo: Perri.wav</i></footer>
+
+    <script type="module">
+
+    </script>
+  
+</body></html>

@@ -1,0 +1,59 @@
+body{
+    background-color: rgb(125, 186, 75);
+}
+header{
+    text-align: center;
+}
+.ajustar_imagen{
+    width: 150px;
+    display: block;
+    margin: auto;
+    max-width: 100%; /* Para que la imagen se ajuste al contenedor */
+    height: auto;
+}
+section {
+    display: flex;
+    gap: 10px; /* Espacio entre artículos (opcional) */
+    justify-content: center; /* Para centrar los artículos */
+    
+
+}
+article {
+    width: 200px; /* Ajusta el tamaño del cuadro */
+    height: 450px; /* Ajusta la altura del cuadro */
+    border: 3px dashed black; /* Borde para visualizar los cuadros */
+    border-style:groove ;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between; /* Distribuye el contenido dentro del article */
+    padding: 10px;
+    box-sizing: border-box; /* Evita que el padding afecte el tamaño */
+    background-color: aquamarine;
+}
+
+.descripcion {
+    font-size: 12px; /* Achica la letra */
+    text-align: left; /* Alinea el texto a la izquierda */
+    width: 90%; /* Limita el ancho para que no se desborde */
+    margin: 0 auto; /* Centra el bloque horizontalmente */
+}
+
+.descripcion ul {
+    padding-left: 15px; /* Agrega espacio entre el borde y la lista */
+    list-style-type: "👉 "; /* Cambia las pelotitas de la lista */
+}
+
+.descripcion li {
+    margin-bottom: 5px; /* Agrega espacio entre los elementos */
+}
+
+.descripcion a {
+    color: blue; /* Color del enlace */
+    text-decoration: none; /* Quita el subrayado */
+}
+
+.descripcion a:hover {
+    text-decoration: underline; /* Subraya el enlace al pasar el mouse */
+}
