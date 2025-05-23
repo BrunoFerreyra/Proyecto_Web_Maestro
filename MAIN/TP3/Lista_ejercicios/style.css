@@ -1,0 +1,38 @@
+body{
+    background-color: rgb(210, 210, 29);
+}
+table{
+    width: 500px;
+    border:5px #000 solid;
+    background-color: rgb(206, 202, 202);
+    text-align: center;
+    border-collapse: collapse;
+    margin: auto;/* Centra la tabla horizontalmente */}
+
+    td{
+        border: 1px black solid;
+        padding: 5px;
+    }
+    
+    th{
+        
+        background-color: black;
+        /* // */
+        width: 30%;
+        height: 40px;
+        text-align: center;
+        border: 3px black solid;
+        color: rgb(206, 206, 54);
+    }
+.col1, td:nth-child(1) {
+    width: 20%;
+}
+
+.col2, td:nth-child(2) {
+    width: 60%;
+    text-align: left;
+}
+
+.col3, td:nth-child(3) {
+    width: 20%;
+}

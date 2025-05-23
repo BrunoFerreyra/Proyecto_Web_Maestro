@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../styles.css">
+    <link rel="stylesheet" href="style2.css">
+    <title>Document</title>
+</head>
+<body>
+    <section>
+        <h2>Ejercicio 2:</h2>
+        <article>
+            <p> Diseñe una página web que incluya un formulario
+                para que los usuarios puedan ingresar los siguientes
+                datos personales</p>
+                <ul>
+                    <li>Apellido (maximo 25 caracteres)</li>
+                    <li>Nombres (maximo 50 caracteres)</li>
+                    <li>Fecha de nacimiento </li>
+                    <li>Correo electronico</li>
+                </ul>
+            <p>Al final del formulario, incluir un boton para que los datos se envien a la direccion: rrhh@miempresa.com.ar</p>
+        </article>
+        <h2>Resolucion:</h2>
+        <article>
+            <form aaction="mailto:rrhh@miempresa.com.ar" method="post" enctype="text/plain">
+            <fieldset>
+            <legend>Ingrese sus datos personales:</legend>
+        
+            <div class="form-group">
+                <label for="idApellidoUsuario">Apellido:</label>
+                <input type="text" placeholder="Máximo 30 caracteres" name="apellidoUsuario" id="idApellidoUsuario" size="30" maxlength="30">
+            </div>
+        
+            <div class="form-group">
+                <label for="idNombreUsuario">Nombres:</label>
+                <input type="text" placeholder="Máximo 50 caracteres" name="nombreUsuario" id="idNombreUsuario">
+            </div>
+        
+            <div class="form-group">
+                <label for="idFechaNacimiento">Fecha de nacimiento:</label>
+                <input type="date" name="fechaNacimiento" id="idFechaNacimiento">
+            </div>
+        
+            <div class="form-group">
+                <label for="idEmailUsuario">Correo Electrónico:</label>
+                <input type="email" name="emailUsuario" id="idEmailUsuario" maxlength="30" size="30">
+            </div>
+            <div style="text-align: center;">
+                <input type="submit" name="Enviar" id="idEnviar" value="Enviar" title="Pulse para Enviar">
+            </div>
+            </fieldset>
+            </form>
+        </article>
+
+    </section>
+</body>
+</html>

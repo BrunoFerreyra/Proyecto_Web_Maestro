@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="ejemplo3.css">
+</head>
+<body>
+    <h2>El perri</h2>
+
+    <section>
+        <h2>El formulario del perri</h2>
+        <article>
+            <h3>Por favor, complete el siguiente formulario</h3>
+
+            <form id="formu1" name="formu" method="post" action="procesa.php">
+                <input name="registrado" type="hidden" id="idRegistrado" value="S">
+                Nombre: 
+                <input name="nombre" type="text" id="idNombre" size="20" maxlength="15">
+                <br><br>
+                Apellido:
+                <input name="apellido" type="text" id="idNombre" size="20" maxlength="15">
+                <br><br>
+                Genero: 
+                <input type="radio" id="idGenero1" name="genero" value="M"> Masculino
+                <input type="radio" id="idGenero2" name="genero" value="F"> Femenino
+                <br><br>
+                Intereses
+                <input name="turismo" type="checkbox" id="idTurismo" value="1">Turismo
+                <input name="deportes" type="checkbox" id="idDeportes" value="1"> Deportes
+                <input name="computacion" type="checkbox" id="idComputacion" value="1">Computacion
+                <br><br>
+                <input name="Enviar" type="submit" id="idEnviar" value="Enviar">
+            </form>              
+        </article>
+    </section>
+</body>
+</html>

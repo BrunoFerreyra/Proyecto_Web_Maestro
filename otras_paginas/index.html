@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Divisor de Equipos</title>
+  <script defer src="script.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Dividir Jugadores en Equipos</h1>
+    <p>Escribí un nombre por línea:</p>
+    <textarea id="playerList" placeholder="1. Javi&#10;2. Bruno&#10;3. dani ace&#10;..."></textarea><br>
+  
+    <label for="numEquipos">¿En cuántos equipos querés dividir?</label><br>
+    <select id="numEquipos">
+      <option value="2">2 equipos</option>
+      <option value="3" selected>3 equipos</option>
+      <option value="4">4 equipos</option>
+    </select><br>
+  
+    <button onclick="dividirEquipos()">Dividir</button>
+    <div class="warning" id="warningMsg"></div>
+  
+    <div class="teams" id="teamsContainer"></div>
+  
+
+  <script>
+  </script>
+</body>
+</html>

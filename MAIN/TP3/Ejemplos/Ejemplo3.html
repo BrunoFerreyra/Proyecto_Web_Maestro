@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../styles.css">
+    <script defer src="Ejemplo3.js"> </script>
+    <title>Document</title>
+</head>
+<body >
+    <div id="contenido">
+
+    </div>
+    <section>
+        <article>
+            <h2>El uso de document.write tiene problemas</h2>
+            <ul>
+                <li>Usando OnLoad, se escribe una vez la pagina cargo, y borra todo lo que habia en la etiqueta <head> </head></li>
+            </ul>
+        </article>
+        
+        <article id="articulo2">
+            <h2>Articulo 2</h2>
+            <button onclick="escribirArticulo()">Escribir articulo</button>
+        </article>
+
+        <h2>Articulo 3:</h2>
+        <button onclick="toggleArticulo()">Abrir / cerrar Articulo</button>
+        <article id="articulo3">
+        </article>
+    </section>
+</body>
+</html>

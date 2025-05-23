@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="prueba.js"></script>
+    <title>Document</title>
+</head>
+<body class="">
+
+    <header>
+        <h1>Adivina la palabra</h1>
+    </header>
+
+    <section class="display-flex-col">
+
+        <article id="presentacion" class="tarjeta">
+            <h3>1. Ingresa tus Datos</h3>
+        
+            <form action="" id="formUsuario" class="display-flex-col">
+                <label for="nombreUsuario">Ingresa tu nombre:</label>
+                <input type="text" id="nombreUsuario" placeholder="nombre">
+                <button type="submit">Comenzar</button>
+            </form>
+        </article>
+        
+        <article id="saludo" class="tarjeta display-flex-col ocultar">
+            <h2>2. Adivina la palabra</h2>
+            <h3>Bienvenido <span class="nombreUsuario"> !</span></h3>
+
+            <select name="" id="cantidadLetras"> 
+                <option value="" disabled selected>Cantidad de letras: </option>
+                <option value="7">7 letras</option>
+                <option value="8">8 letras</option>
+                <option value="9">9 letras</option>
+                <option value="10">10 letras</option>
+            </select>
+            <button id="comenzarJuego"> Ingresar a jugar</button>
+
+        </article>
+
+
+        <article id="juego" class="tarjeta  " >
+            <h3>3. A jugar <span class="nombreUsuario"></span></h3>
+
+            <span id="informarLetras"> </span>
+            
+            <div id="contenedorLetras" class="letras-container"></div>
+
+            <form class=" form3" id="formLetra">
+                <label for="letraIngresada">Letra:</label>
+                <input type="text" id="letraIngresada" maxlength="1">
+                <button type="submit">Probar letra</button>
+            </form>
+        </article>
+
+        <article class="tarjeta "> 
+            <h3>4. Resultado</h3>
+        </article>
+    </section>
+</body>
+</html>

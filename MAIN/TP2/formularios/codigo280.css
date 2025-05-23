@@ -1,0 +1,31 @@
+body {
+    background-color: rgb(216, 84, 84);
+}
+
+form{
+
+    border: 1px solid black;
+
+
+
+}
+
+form h2{
+    text-align: center;
+}
+
+form  div{
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 20px;
+}
+form textarea {
+    padding-top: 5px; /* o 0 si querés bien arriba */
+    padding: 2px;
+  line-height: 1.2; /* hace que el texto ocupe menos altura */
+}
+
+form p textarea  {
+    display: inline-block;
+    vertical-align: bottom;
+}

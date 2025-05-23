@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+    <title>Adivina la palabra</title>
+</head>
+<body>
+
+<header>
+    <h1>Adivina la palabra</h1>
+</header>
+
+<section class="display-flex-col">
+
+<!-- Ingreso de usuario -->
+<article id="pantalla-ingreso" class="tarjeta">
+    <h3>Ingresa tus Datos</h3>
+    <form id="formUsuario" class="display-flex-col">
+    <label for="nombreUsuario">Nombre:</label>
+    <input type="text" id="nombreUsuario" placeholder="Tu nombre">
+    <button type="submit">Comenzar</button>
+    </form>
+</article>
+
+<!-- Saludo -->
+<article id="pantalla-saludo" class="tarjeta ocultar">
+    <h3>Bienvenido <span id="nombre"></span>!</h3>
+    <button id="btnElegirPalabra">Elegir longitud de palabra</button>
+</article>
+
+<!-- Pantalla de juego -->
+<article id="pantalla-juego" class="tarjeta ocultar">
+    <h3>A jugar, <span id="jugador"></span></h3>
+    <!-- Aquí irá el juego -->
+</article>
+
+</section>
+
+</body>
+</html>

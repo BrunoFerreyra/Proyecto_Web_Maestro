@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section>
+        <h2>Ejemplo 1</h2>
+        <h2>Gestion de nuevo usuario:</h2>
+        <article>
+        <h3>Registro de nuevo usuario:</h3>
+        <form id="idFormu" name="formu" method="post" action="Codigo_93.php">
+            <fieldset id="campos" name="campos">
+                <legend>Ingrese los siguientes datos:</legend><br>
+
+                Usuario: 
+                <input name="nomUsuario" type="text" id="idNomUsuario" size="30" maxlength="15"
+                autofocus="autofocus" placeholder="Maximo 15 letras"> <br><br>
+                
+                Contraseña:
+                <input name="passUsuario"  type="text" id="idPassUsuario" size="30" maxlength="8" 
+                placeholder="Maximo 8 caracteres alfanumericos"><br><br>
+                
+                Fecha de nacimiento:
+                <input type="date" id="idNacUsuario" name="nacUsuario" min="1995-01-01" max="2022-12-31"> <br><br>
+                
+                Edad padre:
+                <input type="number" id="idEdadPadreUsuario" name="edadPadreUsuario" min="18" max="99"> <br><br>
+                
+                Edad Madre:
+                <input name="edadMadreUsuario" type="range" id="idEdadMadreUsuario" min="18" max="99" > <br><br>
+                
+                Correo electronico:
+                <input name="mailUsuario" type="email" id="idMailUsuario" size="30" maxlength="25"
+                placeholder="M&aacute;ximo"> <br><br>
+                
+                Web personal:
+                <input name="webUsuario" type="url" id="idWebUsuario" size="30" maxlength="30"
+                autofocus="autofocus" placeholder=""> <br><br>
+                
+                Intereses:
+                <textarea name="intUsuario" placeholder="Ingrese los intereses separados por ;" id="idIntUsuario"
+                rows="3" cols="40"></textarea><br><br>
+                <input type="submit" name="Enviar" id="idEnviar" value="Enviar" title="Pulse para Enviar">
+            </fieldset>
+        </form>
+        </article>
+    </section>
+    <FOOTer><p><i>Archivo: Codigo_93</i></p></FOOTer>
+
+</body>
+</html>
