@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>LabNro1 Olveira Ignacio</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+ <header>
+   <h1>Laboratorio 1 alumno: Olveira Ignacio</title>
+ </header>
+ <section>
+  <article>
+  <div class="contenedor">
+    <div id="ingreso">
+      <h1>Gestor Personal de Tareas</h1>
+      <input type="text" id="nombre-usuario" placeholder="Ingrese su nombre">
+      <button onclick="iniciarSesion()">Entrar</button>
+    </div>
+
+    <div id="aplicacion" class="oculto">
+      <h2 id="saludo"></h2>
+      <button onclick="cerrarSesion()">Cerrar sesión</button>
+
+      <form onsubmit="event.preventDefault(); agregarTarea();">
+        <input type="text" id="nombre" placeholder="Nombre de la tarea">
+        <input type="text" id="descripcion" placeholder="Descripción">
+        <button type="submit">Agregar Tarea</button>
+      </form>
+
+      <h3>Pendientes</h3>
+      <ul id="tareas"></ul>
+
+      <h3>Realizadas</h3>
+      <ul id="realizadas"></ul>
+
+      <button onclick="vaciarTareas()">Vaciar todas</button>
+    </div>
+  </div>
+  </article>
+ </section>
+  <script src="codigo.js"></script>
+</body>
+</html>
