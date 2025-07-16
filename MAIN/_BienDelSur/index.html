@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="script.js"></script>
+  <title>Ciclo de Arte – Muestra + Cena</title>
+  
+</head>
+<body>
+
+  <header>
+    <h1>__</h1>
+  </header>
+
+  <section>
+    <h2>Sobre el evento</h2>
+    <p>
+      Te invitamos a una noche íntima de arte, comida y encuentro. En esta edición especial del Ciclo de Arte, compartiremos una muestra única seguida de una cena pensada con amor.
+    </p>
+    <p><strong>Turnos:</strong> dos grupos de 25 personas.</p>
+    <p><strong>Ubicación:</strong> A confirmar</p>
+    <p><strong>Fecha:</strong> A confirmar</p>
+  </section>
+
+  <section class="form-section">
+    <h2>Inscribite</h2>
+    <form id="registro-form">
+      <label for="nombre">Nombre y apellido</label>
+      <input type="text" id="nombre" name="nombre" required>
+
+      <label for="email">Correo electrónico</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="turno">Seleccioná un turno</label>
+      <select id="turno" name="turno" required>
+        <option value="">-- Elegí un turno --</option>
+        <option value="turno1">Turno 1 (19:00 hs)</option>
+        <option value="turno2">Turno 2 (21:00 hs)</option>
+      </select>
+
+      <label for="restricciones">¿Tenés restricciones alimentarias? (opcional)</label>
+      <textarea id="restricciones" name="restricciones" placeholder="Ej: Soy vegetariano, no como gluten..."></textarea>
+
+      <button type="submit">Enviar inscripción</button>
+    </form>
+    <p id="mensaje"></p>
+
+    <section id="cupos">
+      <h2>Cupos disponibles</h2>
+      <p id="cupos-turno1">Turno 1: cargando...</p>
+      <p id="cupos-turno2">Turno 2: cargando...</p>
+    </section>
+  </section>
+
+  <footer>
+    <p>Organizado por el Ciclo de Arte • Contacto: tu@email.com</p>
+  </footer>
+
+ 
+
+</body>
+</html>
