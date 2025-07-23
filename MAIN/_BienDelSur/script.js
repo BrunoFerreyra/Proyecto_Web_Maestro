@@ -27,7 +27,13 @@ cargarCupos();
 // Al enviar el formulario
 form.addEventListener('submit', e => {
   e.preventDefault();
+
+  const submitButton = form.querySelector('button[type="submit"]');
+  submitButton.disabled = true;
+  submitButton.textContent = 'Enviando...';
+
   const data = new FormData(form);
+
   fetch(scriptURL, {
     method: 'POST',
     body: data
@@ -35,13 +41,18 @@ form.addEventListener('submit', e => {
   .then(response => {
     mensaje.textContent = '¡Gracias por inscribirte! Te esperamos.';
     form.reset();
-    cargarCupos(); // actualiza cupos luego de inscribirse
+    cargarCupos();
   })
   .catch(error => {
     mensaje.textContent = 'Ocurrió un error. Intentá de nuevo.';
     console.error('Error:', error);
+  })
+  .finally(() => {
+    submitButton.disabled = false;
+    submitButton.textContent = 'Enviar inscripción';
   });
 });
+
 
 
 
