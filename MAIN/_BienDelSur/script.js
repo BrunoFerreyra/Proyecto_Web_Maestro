@@ -4,7 +4,7 @@ const form = document.getElementById('registro-form');
 const mensaje = document.getElementById('mensaje');
 
 // REEMPLAZÁ ESTA URL POR LA DE TU SCRIPT
-const scriptURL = 'https://script.google.com/macros/s/AKfycbxbTt21dMzn6BYte0yolfZhU1rNG2j03WBjQIR3urdkn1YB9Torfg2fgwYBC3AqK3po/exec';
+const scriptURL =  'https://script.google.com/macros/s/AKfycbxbTt21dMzn6BYte0yolfZhU1rNG2j03WBjQIR3urdkn1YB9Torfg2fgwYBC3AqK3po/exec';
 
 // Función para mostrar cupos disponibles
 function cargarCupos() {
