@@ -4,7 +4,7 @@ const form = document.getElementById('registro-form');
 const mensaje = document.getElementById('mensaje');
 
 // REEMPLAZÁ ESTA URL POR LA DE TU SCRIPT
-const scriptURL =  'https://script.google.com/macros/s/AKfycbxbTt21dMzn6BYte0yolfZhU1rNG2j03WBjQIR3urdkn1YB9Torfg2fgwYBC3AqK3po/exec';
+const scriptURL =  'https://script.google.com/macros/s/AKfycbwybnicCYI-DU6zITww7TGpGGKDYqFa-OFkAZc_LngyJykx-i8FO_S_5n4yDLX7dsm0/exechttps://script.google.com/macros/s/AKfycbwybnicCYI-DU6zITww7TGpGGKDYqFa-OFkAZc_LngyJykx-i8FO_S_5n4yDLX7dsm0/exec';
 
 // Función para mostrar cupos disponibles
 function cargarCupos() {
@@ -39,7 +39,7 @@ form.addEventListener('submit', e => {
     body: data
   })
   .then(response => {
-    mensaje.textContent = '¡Gracias por inscribirte! Te esperamos.';
+    mensaje.textContent = '¡Gracias por preinscribirte! Revisa tu casilla de mail (y correo no deseado) para completar tu inscripcion.';
     form.reset();
     cargarCupos();
   })
