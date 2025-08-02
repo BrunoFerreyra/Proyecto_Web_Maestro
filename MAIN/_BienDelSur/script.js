@@ -4,7 +4,7 @@ const form = document.getElementById('registro-form');
 const mensaje = document.getElementById('mensaje');
 
 // REEMPLAZÁ ESTA URL POR LA DE TU SCRIPT
-const scriptURL =  'https://script.google.com/macros/s/AKfycbwybnicCYI-DU6zITww7TGpGGKDYqFa-OFkAZc_LngyJykx-i8FO_S_5n4yDLX7dsm0/exechttps://script.google.com/macros/s/AKfycbwybnicCYI-DU6zITww7TGpGGKDYqFa-OFkAZc_LngyJykx-i8FO_S_5n4yDLX7dsm0/exec';
+const scriptURL =  'https://script.google.com/macros/s/AKfycbwybnicCYI-DU6zITww7TGpGGKDYqFa-OFkAZc_LngyJykx-i8FO_S_5n4yDLX7dsm0/exec';
 
 // Función para mostrar cupos disponibles
 function cargarCupos() {
