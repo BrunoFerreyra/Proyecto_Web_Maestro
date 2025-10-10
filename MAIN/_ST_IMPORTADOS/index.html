@@ -3,24 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ST Importados — Demo Catálogo</title>
+  <title>ST Importados — Demo Catálogo + Detalle + Admin</title>
   <!-- Tailwind via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <meta name="color-scheme" content="dark" />
   <style>
-    /* Scrollbar sutil para el drawer del carrito */
     .st-scroll::-webkit-scrollbar{width:8px;height:8px}
     .st-scroll::-webkit-scrollbar-thumb{background:#525252;border-radius:8px}
+    a.active{ color:#111 !important; background:#facc15 !important; }
   </style>
 </head>
 <body class="bg-black text-yellow-200 min-h-screen">
   <!-- Header -->
   <header class="border-b border-zinc-800 bg-zinc-950/80 sticky top-0 backdrop-blur z-30">
     <div class="max-w-6xl mx-auto px-4 py-4 flex items-center gap-3">
-      <div class="flex items-center gap-3">
+      <div class="flex items-center gap-3 cursor-pointer" onclick="go('#/')">
         <div class="w-9 h-9 rounded-xl bg-yellow-400"></div>
         <h1 class="text-xl sm:text-2xl font-bold tracking-wide">ST Importados</h1>
       </div>
+      <nav class="ml-6 hidden sm:flex gap-2">
+        <a id="navCatalog" href="#/" class="px-3 py-1.5 rounded-full text-yellow-200/90 hover:bg-zinc-900">Catálogo</a>
+        <a id="navAdmin" href="#/admin" class="px-3 py-1.5 rounded-full text-yellow-200/90 hover:bg-zinc-900">Admin</a>
+      </nav>
       <div class="ml-auto flex items-center gap-2">
         <button id="openCartBtn" class="relative px-3 py-1.5 rounded-full bg-yellow-400 text-black font-semibold hover:bg-yellow-300 transition">
           Carrito <span id="cartCount" class="ml-1 text-xs align-middle">(0)</span>
@@ -29,41 +33,121 @@
     </div>
   </header>
 
-  <!-- Hero / Filtros -->
-  <section class="max-w-6xl mx-auto px-4 py-6">
-    <div class="flex flex-col md:flex-row gap-4 md:items-center">
-      <div class="md:w-1/2">
-        <h2 class="text-2xl font-semibold">Catálogo</h2>
-        <p class="text-yellow-300/80 text-sm">Demo visual conectada a datos mock. Después, este listado se alimenta con <code>fetch</code> desde la API real.</p>
+  <!-- ======= VISTA: Catálogo ======= -->
+  <section id="viewCatalog" class="">
+    <section class="max-w-6xl mx-auto px-4 py-6">
+      <div class="flex flex-col md:flex-row gap-4 md:items-center">
+        <div class="md:w-1/2">
+          <h2 class="text-2xl font-semibold">Catálogo</h2>
+          <p class="text-yellow-300/80 text-sm">Demo visual conectada a datos mock. Después, este listado se alimenta con <code>fetch</code> desde la API real.</p>
+        </div>
+        <div class="md:ml-auto flex flex-col sm:flex-row gap-3 md:items-center md:justify-end w-full md:w-auto">
+          <label class="relative flex-1">
+            <input id="searchInput" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl py-2.5 pl-10 pr-3 outline-none focus:ring-2 focus:ring-yellow-400" placeholder="Buscar por nombre o marca…" />
+            <span class="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400">🔎</span>
+          </label>
+          <select id="familySelect" class="bg-zinc-900 border border-zinc-800 rounded-xl py-2.5 px-3 outline-none focus:ring-2 focus:ring-yellow-400">
+            <option value="">Familia (todas)</option>
+            <option value="Cítrico">Cítrico</option>
+            <option value="Amaderado">Amaderado</option>
+            <option value="Dulce">Dulce</option>
+            <option value="Aromático">Aromático</option>
+            <option value="Floral">Floral</option>
+          </select>
+          <select id="orderSelect" class="bg-zinc-900 border border-zinc-800 rounded-xl py-2.5 px-3 outline-none focus:ring-2 focus:ring-yellow-400">
+            <option value="destacados">Orden: destacados</option>
+            <option value="precio_asc">Precio ↑</option>
+            <option value="precio_desc">Precio ↓</option>
+            <option value="nombre_asc">Nombre A–Z</option>
+          </select>
+        </div>
       </div>
-      <div class="md:ml-auto flex flex-col sm:flex-row gap-3 md:items-center md:justify-end w-full md:w-auto">
-        <label class="relative flex-1">
-          <input id="searchInput" class="w-full bg-zinc-900 border border-zinc-800 rounded-xl py-2.5 pl-10 pr-3 outline-none focus:ring-2 focus:ring-yellow-400" placeholder="Buscar por nombre o marca…" />
-          <span class="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400">🔎</span>
-        </label>
-        <select id="familySelect" class="bg-zinc-900 border border-zinc-800 rounded-xl py-2.5 px-3 outline-none focus:ring-2 focus:ring-yellow-400">
-          <option value="">Familia (todas)</option>
-          <option value="Cítrico">Cítrico</option>
-          <option value="Amaderado">Amaderado</option>
-          <option value="Dulce">Dulce</option>
-          <option value="Aromático">Aromático</option>
-          <option value="Floral">Floral</option>
-        </select>
-        <select id="orderSelect" class="bg-zinc-900 border border-zinc-800 rounded-xl py-2.5 px-3 outline-none focus:ring-2 focus:ring-yellow-400">
-          <option value="destacados">Orden: destacados</option>
-          <option value="precio_asc">Precio ↑</option>
-          <option value="precio_desc">Precio ↓</option>
-          <option value="nombre_asc">Nombre A–Z</option>
-        </select>
+    </section>
+
+    <main class="max-w-6xl mx-auto px-4 pb-20">
+      <div id="grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5"></div>
+      <div id="emptyState" class="hidden text-center text-yellow-300/80 py-16">No se encontraron productos con esos filtros.</div>
+    </main>
+  </section>
+
+  <!-- ======= VISTA: Detalle de Producto ======= -->
+  <section id="viewDetail" class="hidden">
+    <div class="max-w-6xl mx-auto px-4 py-6">
+      <button onclick="go('#/')" class="mb-4 text-sm px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 hover:bg-zinc-800">← Volver</button>
+      <div id="detailWrap" class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- contenido por JS -->
       </div>
     </div>
   </section>
 
-  <!-- Grid de productos -->
-  <main class="max-w-6xl mx-auto px-4 pb-20">
-    <div id="grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5"></div>
-    <div id="emptyState" class="hidden text-center text-yellow-300/80 py-16">No se encontraron productos con esos filtros.</div>
-  </main>
+  <!-- ======= VISTA: Admin ======= -->
+  <section id="viewAdmin" class="hidden">
+    <div class="max-w-6xl mx-auto px-4 py-6">
+      <div class="flex items-center gap-3 mb-4">
+        <h2 class="text-2xl font-semibold">Panel Admin (Demo)</h2>
+        <span class="text-xs text-yellow-300/70">Datos en memoria. En producción, esto pega a la API protegida.</span>
+      </div>
+
+      <div class="flex gap-2 mb-4">
+        <button data-tab="productos" class="admTab px-3 py-1.5 rounded-full bg-zinc-900 border border-zinc-800">Productos</button>
+        <button data-tab="ordenes" class="admTab px-3 py-1.5 rounded-full bg-zinc-900 border border-zinc-800">Órdenes</button>
+        <button data-tab="config" class="admTab px-3 py-1.5 rounded-full bg-zinc-900 border border-zinc-800">Configuración</button>
+      </div>
+
+      <!-- Tab: Productos -->
+      <div id="tab_productos" class="">
+        <div class="flex flex-col sm:flex-row gap-2 sm:items-center sm:justify-between mb-3">
+          <div class="text-yellow-300/80 text-sm">ABM básico: agregar, editar precio/stock, eliminar.</div>
+          <button id="btnAddProd" class="px-3 py-1.5 rounded-xl bg-yellow-400 text-black font-semibold hover:bg-yellow-300">Agregar producto</button>
+        </div>
+
+        <div class="overflow-x-auto border border-zinc-800 rounded-2xl">
+          <table class="w-full text-sm">
+            <thead class="bg-zinc-900/60">
+              <tr class="text-left">
+                <th class="p-3">Imagen</th>
+                <th class="p-3">Nombre</th>
+                <th class="p-3">Marca</th>
+                <th class="p-3">Familia</th>
+                <th class="p-3">Precio</th>
+                <th class="p-3">Stock</th>
+                <th class="p-3 w-40">Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="admBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Tab: Órdenes (simuladas) -->
+      <div id="tab_ordenes" class="hidden">
+        <div class="text-yellow-300/80 text-sm mb-3">Listado de órdenes simuladas. En el real, vendrá de <code>/api/ordenes</code>.</div>
+        <div id="ordersWrap" class="flex flex-col gap-3"></div>
+      </div>
+
+      <!-- Tab: Config -->
+      <div id="tab_config" class="hidden">
+        <div class="grid gap-3 max-w-xl">
+          <label class="block">
+            <span class="text-sm text-yellow-300/80">Moneda predeterminada</span>
+            <select class="w-full bg-zinc-900 border border-zinc-800 rounded-xl py-2.5 px-3 mt-1">
+              <option>ARS (Peso Argentino)</option>
+              <option>USD (Dólar)</option>
+            </select>
+          </label>
+          <label class="block">
+            <span class="text-sm text-yellow-300/80">Integración de pagos</span>
+            <select class="w-full bg-zinc-900 border border-zinc-800 rounded-xl py-2.5 px-3 mt-1">
+              <option>Mercado Pago (Recomendado)</option>
+              <option>Stripe</option>
+              <option>Manual (transferencia)</option>
+            </select>
+          </label>
+          <p class="text-yellow-300/70 text-sm">* En producción, estos valores se guardan vía API y requieren autenticación.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Drawer Carrito -->
   <aside id="cartDrawer" class="fixed top-0 right-0 w-full sm:w-[420px] h-full bg-zinc-950 border-l border-zinc-800 translate-x-full transition-transform z-40 flex flex-col">
@@ -85,12 +169,14 @@
   <!-- Backdrop del drawer -->
   <div id="backdrop" class="fixed inset-0 bg-black/60 opacity-0 pointer-events-none transition-opacity z-30"></div>
 
-  <!-- Template tarjeta producto (para clonación) -->
+  <!-- Templates -->
   <template id="cardTpl">
     <article class="group bg-zinc-900 rounded-2xl p-3 shadow-lg border border-zinc-800 hover:border-yellow-400/60 transition flex flex-col">
-      <div class="aspect-[5/6] bg-zinc-800/60 rounded-xl overflow-hidden flex items-center justify-center">
-        <img class="w-full h-full object-cover" alt="" />
-      </div>
+      <a class="block" href="#">
+        <div class="aspect-[5/6] bg-zinc-800/60 rounded-xl overflow-hidden flex items-center justify-center">
+          <img class="w-full h-full object-cover" alt="" />
+        </div>
+      </a>
       <div class="mt-3 flex-1 flex flex-col">
         <h4 class="font-semibold leading-tight"></h4>
         <p class="text-xs text-yellow-300/80"></p>
@@ -102,60 +188,93 @@
     </article>
   </template>
 
+  <template id="orderTpl">
+    <div class="border border-zinc-800 rounded-xl p-3 flex items-center gap-3">
+      <div class="text-sm text-yellow-300/80">#<span class="o-id"></span></div>
+      <div class="flex-1">
+        <div class="font-semibold o-name"></div>
+        <div class="text-xs text-yellow-300/70 o-meta"></div>
+      </div>
+      <span class="px-2 py-1 rounded-full text-xs font-semibold o-status bg-zinc-900 border border-zinc-800"></span>
+    </div>
+  </template>
+
   <script>
-    // ====== Datos Mock (reemplazables por fetch a /api/productos) ======
+    // ====== Datos Mock ======
+    let nextId = 1000;
     const MOCK = [
-      { id: '9am', nombre: '9 AM', marca: 'Afnan', precio: 13500, stock: 12, familia: 'Cítrico', imagen: 'img/1.png' },
-      { id: 'cdn-intense', nombre: 'Club de Nuit Intense', marca: 'Armaf', precio: 15500, stock: 7, familia: 'Amaderado', imagen: 'img/2.png' },
-      { id: 'aventus', nombre: 'Aventus', marca: 'Creed', precio: 450000, stock: 2, familia: 'Aromático', imagen: 'img/3.png' },
-      { id: 'sauvage', nombre: 'Sauvage', marca: 'Dior', precio: 220000, stock: 5, familia: 'Aromático', imagen: 'img/4.png' },
-      { id: 'goodgirl', nombre: 'Good Girl', marca: 'Carolina Herrera', precio: 180000, stock: 8, familia: 'Dulce', imagen: 'img/5.png' },
-      { id: 'la-vie', nombre: 'La Vie Est Belle', marca: 'Lancôme', precio: 210000, stock: 6, familia: 'Floral', imagen: 'img/6.png' },
-      { id: 'bleu', nombre: 'Bleu de Chanel', marca: 'Chanel', precio: 300000, stock: 4, familia: 'Amaderado', imagen: 'img/7.png' },
-      { id: 'lightblue', nombre: 'Light Blue', marca: 'Dolce & Gabbana', precio: 160000, stock: 10, familia: 'Cítrico', imagen: 'img/8.png' }
+      { id: '9am', nombre: '9 AM', marca: 'Afnan', precio: 13500, stock: 12, familia: 'Cítrico', imagen: 'img/1.png', descripcion: 'Cítrico fresco ideal para diario.' },
+      { id: 'cdn-intense', nombre: 'Club de Nuit Intense', marca: 'Armaf', precio: 15500, stock: 7, familia: 'Amaderado', imagen: 'img/2.png', descripcion: 'Amaderado intenso con gran proyección.' },
+      { id: 'aventus', nombre: 'Aventus', marca: 'Creed', precio: 450000, stock: 2, familia: 'Aromático', imagen: 'img/3.png', descripcion: 'Ícono aromático, notas afrutadas y ahumadas.' },
+      { id: 'sauvage', nombre: 'Sauvage', marca: 'Dior', precio: 220000, stock: 5, familia: 'Aromático', imagen: 'img/4.png', descripcion: 'Aromático moderno, versátil y potente.' },
+      { id: 'goodgirl', nombre: 'Good Girl', marca: 'Carolina Herrera', precio: 180000, stock: 8, familia: 'Dulce', imagen: 'img/5.png', descripcion: 'Dulce elegante, femenino y nocturno.' },
+      { id: 'la-vie', nombre: 'La Vie Est Belle', marca: 'Lancôme', precio: 210000, stock: 6, familia: 'Floral', imagen: 'img/6.png', descripcion: 'Floral gourmand, cálido y alegre.' },
+      { id: 'bleu', nombre: 'Bleu de Chanel', marca: 'Chanel', precio: 300000, stock: 4, familia: 'Amaderado', imagen: 'img/7.png', descripcion: 'Amaderado cítrico elegante para todo el año.' },
+      { id: 'lightblue', nombre: 'Light Blue', marca: 'Dolce & Gabbana', precio: 160000, stock: 10, familia: 'Cítrico', imagen: 'img/8.png', descripcion: 'Cítrico limpio, perfecto para verano.' }
     ];
 
-    // ====== Estado simple ======
+    const MOCK_ORDERS = [
+      { id: 1, nombre: 'Bruno Ferreyra', total: 270000, items: 3, estado: 'PENDIENTE', fecha: '2025-10-01' },
+      { id: 2, nombre: 'Ana Pérez', total: 160000, items: 1, estado: 'PAGADA', fecha: '2025-10-03' },
+      { id: 3, nombre: 'Juan Gómez', total: 450000, items: 1, estado: 'ENVIADA', fecha: '2025-10-05' }
+    ];
+
+    // ====== Estado ======
     let state = {
       productos: [...MOCK],
       filtroTexto: '',
       filtroFamilia: '',
       orden: 'destacados',
-      carrito: JSON.parse(localStorage.getItem('st.cart') || '[]')
+      carrito: JSON.parse(localStorage.getItem('st.cart') || '[]'),
+      tab: 'productos'
     };
 
-    // ====== Helpers ======
+    // ====== Utils ======
     const $ = (sel, el=document) => el.querySelector(sel);
     const $$ = (sel, el=document) => [...el.querySelectorAll(sel)];
     const formatPrice = n => new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', maximumFractionDigits: 0 }).format(n);
+    function go(hash){ location.hash = hash; }
 
-    function persistCart(){
-      localStorage.setItem('st.cart', JSON.stringify(state.carrito));
+    function persistCart(){ localStorage.setItem('st.cart', JSON.stringify(state.carrito)); }
+    function cartCount(){ return state.carrito.reduce((acc, it)=>acc + it.cant, 0); }
+    function cartTotal(){ return state.carrito.reduce((acc, it)=>acc + it.cant * it.precio, 0); }
+
+    // ====== Router ======
+    function router(){
+      const h = location.hash || '#/';
+      $('#navCatalog')?.classList.toggle('active', h === '#/' || h.startsWith('#/producto'));
+      $('#navAdmin')?.classList.toggle('active', h.startsWith('#/admin'));
+
+      $('#viewCatalog').classList.add('hidden');
+      $('#viewDetail').classList.add('hidden');
+      $('#viewAdmin').classList.add('hidden');
+
+      if(h === '#/' || h === ''){
+        $('#viewCatalog').classList.remove('hidden');
+        renderGrid();
+      } else if(h.startsWith('#/producto/')){
+        const id = decodeURIComponent(h.split('/')[2] || '');
+        renderDetail(id);
+        $('#viewDetail').classList.remove('hidden');
+      } else if(h.startsWith('#/admin')){
+        $('#viewAdmin').classList.remove('hidden');
+        renderAdmin();
+      } else {
+        $('#viewCatalog').classList.remove('hidden');
+      }
     }
+    window.addEventListener('hashchange', router);
 
-    function cartCount(){
-      return state.carrito.reduce((acc, it)=>acc + it.cant, 0);
-    }
-
-    function cartTotal(){
-      return state.carrito.reduce((acc, it)=>acc + it.cant * it.precio, 0);
-    }
-
-    // ====== Render de productos ======
+    // ====== Catálogo ======
     function getFiltered(){
       let list = [...state.productos];
       const t = state.filtroTexto.trim().toLowerCase();
-      if(t){
-        list = list.filter(p => (p.nombre+" "+p.marca).toLowerCase().includes(t));
-      }
-      if(state.filtroFamilia){
-        list = list.filter(p => p.familia === state.filtroFamilia);
-      }
+      if(t){ list = list.filter(p => (p.nombre+" "+p.marca).toLowerCase().includes(t)); }
+      if(state.filtroFamilia){ list = list.filter(p => p.familia === state.filtroFamilia); }
       switch(state.orden){
         case 'precio_asc': list.sort((a,b)=>a.precio-b.precio); break;
         case 'precio_desc': list.sort((a,b)=>b.precio-a.precio); break;
         case 'nombre_asc': list.sort((a,b)=>a.nombre.localeCompare(b.nombre)); break;
-        default: /* destacados */ break;
       }
       return list;
     }
@@ -168,11 +287,13 @@
       const tpl = $('#cardTpl');
       data.forEach(p => {
         const node = tpl.content.cloneNode(true);
+        const link = $('a', node);
         const img = $('img', node);
         const name = $('h4', node);
         const meta = $('p', node);
         const price = $('span.font-bold', node);
         const btn = $('.addBtn', node);
+        link.href = `#/producto/${encodeURIComponent(p.id)}`;
         img.src = p.imagen; img.alt = p.nombre;
         name.textContent = p.nombre;
         meta.textContent = `${p.marca} • ${p.familia}`;
@@ -180,6 +301,42 @@
         btn.addEventListener('click', ()=> addToCart(p));
         grid.appendChild(node);
       });
+    }
+
+    // ====== Detalle ======
+    function renderDetail(id){
+      const p = state.productos.find(x=>x.id===id);
+      const wrap = $('#detailWrap');
+      if(!p){ wrap.innerHTML = '<div class="text-yellow-300/80">Producto no encontrado.</div>'; return; }
+      wrap.innerHTML = `
+        <div class="bg-zinc-900 rounded-2xl p-4 border border-zinc-800">
+          <div class="aspect-[5/6] bg-zinc-800/60 rounded-xl overflow-hidden flex items-center justify-center">
+            <img src="${p.imagen}" alt="${p.nombre}" class="w-full h-full object-cover" />
+          </div>
+          <div class="mt-2 text-xs text-yellow-300/70">ID: ${p.id}</div>
+        </div>
+        <div class="bg-zinc-900 rounded-2xl p-4 border border-zinc-800 flex flex-col">
+          <h2 class="text-2xl font-semibold">${p.nombre}</h2>
+          <p class="text-yellow-300/80">${p.marca} • ${p.familia}</p>
+          <div class="mt-3 text-3xl font-bold">${formatPrice(p.precio)}</div>
+          <div class="mt-1 text-sm ${p.stock>0?'text-green-400':'text-red-400'}">${p.stock>0?`En stock (${p.stock})`:'Sin stock'}</div>
+          <p class="mt-4 text-yellow-200/90 leading-relaxed">${p.descripcion || ''}</p>
+
+          <div class="mt-6 flex gap-3">
+            <button class="px-4 py-2 rounded-xl bg-yellow-400 text-black font-semibold hover:bg-yellow-300" id="btnAddDetail">Agregar al carrito</button>
+            <button class="px-4 py-2 rounded-xl bg-zinc-900 border border-zinc-800" onclick="go('#/')">Seguir viendo</button>
+          </div>
+
+          <div class="mt-6">
+            <h3 class="font-semibold mb-2">Notas destacadas (demo)</h3>
+            <div class="flex flex-wrap gap-2">
+              <span class="px-2 py-1 rounded-full bg-zinc-800 border border-zinc-700 text-xs">Bergamota</span>
+              <span class="px-2 py-1 rounded-full bg-zinc-800 border border-zinc-700 text-xs">Pimienta</span>
+              <span class="px-2 py-1 rounded-full bg-zinc-800 border border-zinc-700 text-xs">Ambroxan</span>
+            </div>
+          </div>
+        </div>`;
+      $('#btnAddDetail').onclick = ()=> addToCart(p);
     }
 
     // ====== Carrito ======
@@ -191,7 +348,6 @@
       updateCartUI();
       openCart();
     }
-
     function changeQty(id, delta){
       const it = state.carrito.find(i=>i.id===id);
       if(!it) return;
@@ -200,20 +356,16 @@
       persistCart();
       updateCartUI();
     }
-
     function updateCartUI(){
       $('#cartCount').textContent = `(${cartCount()})`;
       $('#cartTotal').textContent = formatPrice(cartTotal());
-
       const list = $('#cartList');
       list.innerHTML='';
       if(state.carrito.length===0){
         list.innerHTML = '<div class="text-yellow-300/80 text-center py-12">Tu carrito está vacío</div>';
-        $('#checkoutBtn').disabled = true;
-        return;
+        $('#checkoutBtn').disabled = true; return;
       }
       $('#checkoutBtn').disabled = false;
-
       state.carrito.forEach(it=>{
         const row = document.createElement('div');
         row.className = 'flex gap-3 items-center border border-zinc-800 rounded-xl p-3';
@@ -232,35 +384,127 @@
           </div>`;
         list.appendChild(row);
       });
-
-      // Delegación de eventos +/-
       $('#cartList').onclick = (e)=>{
         const btn = e.target.closest('button[data-act]');
-        if(!btn) return;
-        const id = btn.getAttribute('data-id');
-        const act = btn.getAttribute('data-act');
+        if(!btn) return; const id = btn.getAttribute('data-id'); const act = btn.getAttribute('data-act');
         changeQty(id, act==='inc'? +1 : -1);
       };
     }
 
-    // ====== Drawer ======
+    // Drawer
     const drawer = $('#cartDrawer');
     const backdrop = $('#backdrop');
-    function openCart(){
-      drawer.style.transform = 'translateX(0)';
-      backdrop.classList.remove('pointer-events-none');
-      requestAnimationFrame(()=> backdrop.style.opacity = 1);
-    }
-    function closeCart(){
-      drawer.style.transform = 'translateX(100%)';
-      backdrop.style.opacity = 0;
-      setTimeout(()=> backdrop.classList.add('pointer-events-none'), 200);
+    function openCart(){ drawer.style.transform = 'translateX(0)'; backdrop.classList.remove('pointer-events-none'); requestAnimationFrame(()=> backdrop.style.opacity = 1); }
+    function closeCart(){ drawer.style.transform = 'translateX(100%)'; backdrop.style.opacity = 0; setTimeout(()=> backdrop.classList.add('pointer-events-none'), 200); }
+
+    // ====== Admin ======
+    function renderAdmin(){
+      // Tabs
+      $$('.admTab').forEach(b=>{
+        b.classList.remove('active');
+        b.onclick = ()=>{ state.tab = b.dataset.tab; showAdmTab(); };
+      });
+      showAdmTab();
+      renderAdmProductos();
+      renderOrders();
+      $('#btnAddProd').onclick = addProdPrompt;
     }
 
-    // ====== Eventos UI ======
+    function showAdmTab(){
+      $$('.admTab').forEach(b=> b.classList.toggle('active', b.dataset.tab===state.tab));
+      $('#tab_productos').classList.toggle('hidden', state.tab!=='productos');
+      $('#tab_ordenes').classList.toggle('hidden', state.tab!=='ordenes');
+      $('#tab_config').classList.toggle('hidden', state.tab!=='config');
+    }
+
+    function renderAdmProductos(){
+      const tbody = $('#admBody');
+      tbody.innerHTML='';
+      state.productos.forEach(p=>{
+        const tr = document.createElement('tr');
+        tr.className = 'border-t border-zinc-800';
+        tr.innerHTML = `
+          <td class="p-3"><img src="${p.imagen}" alt="${p.nombre}" class="w-14 h-14 object-cover rounded-lg"/></td>
+          <td class="p-3">${p.nombre}</td>
+          <td class="p-3">${p.marca}</td>
+          <td class="p-3">${p.familia}</td>
+          <td class="p-3">
+            <input type="number" class="w-28 bg-zinc-900 border border-zinc-800 rounded-lg px-2 py-1" value="${p.precio}" data-id="${p.id}" data-field="precio" />
+          </td>
+          <td class="p-3">
+            <input type="number" class="w-24 bg-zinc-900 border border-zinc-800 rounded-lg px-2 py-1" value="${p.stock}" data-id="${p.id}" data-field="stock" />
+          </td>
+          <td class="p-3">
+            <div class="flex gap-2">
+              <button class="px-2 py-1 rounded-lg bg-zinc-900 border border-zinc-800" data-act="save" data-id="${p.id}">Guardar</button>
+              <button class="px-2 py-1 rounded-lg bg-zinc-900 border border-zinc-800" data-act="del" data-id="${p.id}">Eliminar</button>
+              <a class="px-2 py-1 rounded-lg bg-yellow-400 text-black font-semibold" href="#/producto/${p.id}">Ver</a>
+            </div>
+          </td>`;
+        tbody.appendChild(tr);
+      });
+
+      tbody.onclick = (e)=>{
+        const btn = e.target.closest('button[data-act]');
+        if(btn){
+          const id = btn.getAttribute('data-id');
+          const act = btn.getAttribute('data-act');
+          if(act==='del') delProd(id);
+          if(act==='save') saveRow(id);
+        }
+      };
+    }
+
+    function saveRow(id){
+      const precio = parseInt($(`input[data-id="${id}"][data-field="precio"]`).value||'0',10);
+      const stock = parseInt($(`input[data-id="${id}"][data-field="stock"]`).value||'0',10);
+      const p = state.productos.find(x=>x.id===id);
+      if(!p) return;
+      p.precio = precio; p.stock = stock;
+      renderGrid();
+      alert('Cambios guardados (demo). En producción se enviaría PATCH /api/productos/'+id);
+    }
+
+    function delProd(id){
+      if(!confirm('¿Eliminar producto?')) return;
+      state.productos = state.productos.filter(p=>p.id!==id);
+      renderAdmProductos();
+      renderGrid();
+    }
+
+    function addProdPrompt(){
+      const nombre = prompt('Nombre del producto:'); if(!nombre) return;
+      const id = (nombre.toLowerCase().replace(/[^a-z0-9]+/g,'-') + '-' + (++nextId));
+      const marca = prompt('Marca:') || 'Genérica';
+      const precio = parseInt(prompt('Precio (ARS):')||'0',10);
+      const stock = parseInt(prompt('Stock:')||'0',10);
+      const familia = prompt('Familia (Cítrico/Amaderado/Dulce/Aromático/Floral):') || 'Cítrico';
+      const imagen = prompt('Ruta imagen (ej: img/nueva.jpg):') || 'img/placeholder.jpg';
+      state.productos.push({ id, nombre, marca, precio, stock, familia, imagen, descripcion: '' });
+      renderAdmProductos(); renderGrid();
+    }
+
+    function renderOrders(){
+      const wrap = $('#ordersWrap');
+      wrap.innerHTML = '';
+      MOCK_ORDERS.forEach(o=>{
+        const card = $('#orderTpl').content.cloneNode(true);
+        $('.o-id', card).textContent = o.id;
+        $('.o-name', card).textContent = `${o.nombre} — ${formatPrice(o.total)} • ${o.items} item(s)`;
+        $('.o-meta', card).textContent = `Fecha: ${o.fecha}`;
+        const badge = $('.o-status', card);
+        badge.textContent = o.estado;
+        if(o.estado==='PAGADA') badge.classList.add('border-green-500');
+        if(o.estado==='PENDIENTE') badge.classList.add('border-yellow-500');
+        if(o.estado==='ENVIADA') badge.classList.add('border-blue-500');
+        wrap.appendChild(card);
+      });
+    }
+
+    // ====== Eventos UI Globales ======
     $('#openCartBtn').addEventListener('click', openCart);
     $('#closeCartBtn').addEventListener('click', closeCart);
-    backdrop.addEventListener('click', closeCart);
+    $('#backdrop').addEventListener('click', closeCart);
 
     $('#searchInput').addEventListener('input', (e)=>{ state.filtroTexto = e.target.value; renderGrid(); });
     $('#familySelect').addEventListener('change', (e)=>{ state.filtroFamilia = e.target.value; renderGrid(); });
@@ -271,17 +515,8 @@
     });
 
     // ====== Init ======
-    renderGrid();
     updateCartUI();
-
-    // ====== Cómo se conectará al backend luego ======
-    // Ejemplo de sustitución del MOCK por API real:
-    // async function loadFromAPI(){
-    //   const res = await fetch('/api/productos?search='+encodeURIComponent(state.filtroTexto));
-    //   const data = await res.json();
-    //   state.productos = data.items; // suponiendo shape { items: [...] }
-    //   renderGrid();
-    // }
+    router();
   </script>
 </body>
 </html>
