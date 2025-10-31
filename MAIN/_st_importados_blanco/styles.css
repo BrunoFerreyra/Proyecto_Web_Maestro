@@ -1,9 +1,31 @@
-/* Light theme tweaks + gold accents */
-:root{
-  --gold:#D4AF37;
+/* Light theme tweaks + gold accents (consolidated) */
+/* === UI Consistency: Gold buttons & active links ============================
+   - --gold: color master (match your logo)
+   - .btn-primary: reusable class for all "botón principal"
+   - Override any leftover Tailwind amber utility with --gold (safety net)
+============================================================================= */
+:root{  --gold:#cfa72d; } /* <- ajustá este valor si querés otro tono de dorado */
+
+.bg-gold{ background-color: var(--gold) !important; } /* compat. con uso previo */
+.btn-primary{
+  background-color: var(--gold) !important;
+  color:#fff !important;
+  border-radius: 9999px; /* pill */
+  font-weight: 600;
+  transition: opacity .2s ease;
 }
+.btn-primary:hover{ opacity:.9; }
+
+/* Link activo del nav (Catálogo/Admin) */
+a.active{ color:#fff !important; background:var(--gold) !important; }
+
+/* Safety net: si quedó algún bg-amber-500/hover:bg-amber-400 en el HTML/JS,
+   estas reglas lo reemplazan por --gold sin tocar más archivos. */
+[class~="bg-amber-500"]{ background-color: var(--gold) !important; }
+[class~="hover:bg-amber-400"]:hover{ background-color: var(--gold) !important; opacity:.9; }
+
 .st-scroll::-webkit-scrollbar{width:8px;height:8px}
 .st-scroll::-webkit-scrollbar-thumb{background:#bdbdbd;border-radius:8px}
-a.active{color:#111 !important;background:var(--gold) !important;}
+
 /* Soft shadows and transitions */
 .shadow-soft{box-shadow:0 1px 2px rgba(0,0,0,.05),0 8px 24px rgba(0,0,0,.06)}
