@@ -1,0 +1,9 @@
+/* Light theme tweaks + gold accents */
+:root{
+  --gold:#D4AF37;
+}
+.st-scroll::-webkit-scrollbar{width:8px;height:8px}
+.st-scroll::-webkit-scrollbar-thumb{background:#bdbdbd;border-radius:8px}
+a.active{color:#111 !important;background:var(--gold) !important;}
+/* Soft shadows and transitions */
+.shadow-soft{box-shadow:0 1px 2px rgba(0,0,0,.05),0 8px 24px rgba(0,0,0,.06)}
