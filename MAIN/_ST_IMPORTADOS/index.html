@@ -22,11 +22,22 @@
         <h1 class="text-xl sm:text-2xl font-bold tracking-wide">ST Importados</h1>
       </div>
       <nav class="ml-6 hidden sm:flex gap-2">
+        <!-- Menú móvil -->
+        <details class="sm:hidden ml-2">
+          <summary class="px-3 py-1.5 rounded-full bg-zinc-900 border border-zinc-800 cursor-pointer">
+            Menú
+          </summary>
+          <nav class="mt-2 flex flex-col gap-2">
+            <a href="#/" class="px-3 py-1.5 rounded-full text-yellow-200/90 hover:bg-zinc-900">Catálogo</a>
+            <a href="#/admin" class="px-3 py-1.5 rounded-full text-yellow-200/90 hover:bg-zinc-900">Admin</a>
+          </nav>
+        </details>
+
         <a id="navCatalog" href="#/" class="px-3 py-1.5 rounded-full text-yellow-200/90 hover:bg-zinc-900">Catálogo</a>
         <a id="navAdmin" href="#/admin" class="px-3 py-1.5 rounded-full text-yellow-200/90 hover:bg-zinc-900">Admin</a>
       </nav>
       <div class="ml-auto flex items-center gap-2">
-        <button id="openCartBtn" class="relative px-3 py-1.5 rounded-full bg-yellow-400 text-black font-semibold hover:bg-yellow-300 transition">
+        <button id="openCartBtn" class="relative px-3 py-1.5 min-h-[44px] rounded-full bg-yellow-400 text-black font-semibold hover:bg-yellow-300 transition">
           Carrito <span id="cartCount" class="ml-1 text-xs align-middle">(0)</span>
         </button>
       </div>
@@ -65,7 +76,7 @@
     </section>
 
     <main class="max-w-6xl mx-auto px-4 pb-20">
-      <div id="grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5"></div>
+      <div id="grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"></div>
       <div id="emptyState" class="hidden text-center text-yellow-300/80 py-16">No se encontraron productos con esos filtros.</div>
     </main>
   </section>
@@ -152,7 +163,7 @@
   <!-- Drawer Carrito -->
   <aside id="cartDrawer" class="fixed top-0 right-0 w-full sm:w-[420px] h-full bg-zinc-950 border-l border-zinc-800 translate-x-full transition-transform z-40 flex flex-col">
     <div class="p-4 border-b border-zinc-800 flex items-center gap-2">
-      <button id="closeCartBtn" class="px-2 py-1 rounded-lg bg-zinc-900 border border-zinc-800">✕</button>
+      <button id="closeCartBtn" class="px-2 py-1 min-h-[44px] rounded-lg bg-zinc-900 border border-zinc-800">✕</button>
       <h3 class="text-lg font-semibold ml-1">Tu carrito</h3>
       <div class="ml-auto text-sm text-yellow-300/70">Demo — no es compra real</div>
     </div>
@@ -162,7 +173,7 @@
         <span class="text-yellow-300/80">Total</span>
         <strong id="cartTotal" class="text-yellow-200">$0</strong>
       </div>
-      <button id="checkoutBtn" class="w-full py-3 rounded-xl bg-yellow-400 text-black font-semibold hover:bg-yellow-300 disabled:opacity-50">Continuar (simulado)</button>
+      <button id="checkoutBtn" class="w-full py-3 min-h-[44px]rounded-xl bg-yellow-400 text-black font-semibold hover:bg-yellow-300 disabled:opacity-50">Continuar (simulado)</button>
     </div>
   </aside>
 
@@ -182,7 +193,7 @@
         <p class="text-xs text-yellow-300/80"></p>
         <div class="mt-2 flex items-center justify-between">
           <span class="font-bold"></span>
-          <button class="addBtn rounded-full px-3 py-1 bg-yellow-400 text-black font-semibold hover:bg-yellow-300">Agregar</button>
+          <button class="addBtn rounded-full px-3 py-1 min-h-[44px] bg-yellow-400 text-black font-semibold hover:bg-yellow-300">Agregar</button>
         </div>
       </div>
     </article>
@@ -323,8 +334,8 @@
           <p class="mt-4 text-yellow-200/90 leading-relaxed">${p.descripcion || ''}</p>
 
           <div class="mt-6 flex gap-3">
-            <button class="px-4 py-2 rounded-xl bg-yellow-400 text-black font-semibold hover:bg-yellow-300" id="btnAddDetail">Agregar al carrito</button>
-            <button class="px-4 py-2 rounded-xl bg-zinc-900 border border-zinc-800" onclick="go('#/')">Seguir viendo</button>
+            <button class="px-4 py-2 min-h-[44px] rounded-xl bg-yellow-400 text-black font-semibold hover:bg-yellow-300" id="btnAddDetail">Agregar al carrito</button>
+            <button class="px-4 py-2 min-h-[44px] rounded-xl bg-zinc-900 border border-zinc-800" onclick="go('#/')">Seguir viendo</button>
           </div>
 
           <div class="mt-6">
