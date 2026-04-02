@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rutina CRC 2026</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">Comodoro Rugby Club</p>
+      <h1>Rutina Plantel Superior</h1>
+    </div>
+    <div class="week-chip" id="weekChip">Semana 1</div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <p class="hero-label">Vista actual</p>
+        <h2 id="currentDayTitle">Día 1</h2>
+        <p id="currentDayDescription">Activación, bloques de fuerza y aeróbico.</p>
+      </div>
+
+      <div class="controls">
+        <label for="weekSelect">Semana</label>
+        <select id="weekSelect">
+          <option value="1">Semana 1</option>
+          <option value="2">Semana 2</option>
+          <option value="3">Semana 3</option>
+          <option value="4">Semana 4</option>
+        </select>
+      </div>
+    </section>
+
+    <nav class="tabs">
+      <button class="tab active" data-day="dia1">Día 1</button>
+      <button class="tab" data-day="dia2">Día 2</button>
+      <button class="tab" data-day="dia3">Día 3</button>
+    </nav>
+
+    <section class="layout">
+      <aside class="summary-card">
+        <h3>Resumen del día</h3>
+        <ul id="summaryList"></ul>
+      </aside>
+
+      <section id="routineView" class="routine-view"></section>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
