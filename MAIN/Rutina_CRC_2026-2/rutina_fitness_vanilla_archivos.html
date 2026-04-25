@@ -1,0 +1,173 @@
+// ===== index.html =====
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rutinas del Gym</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand">
+        <h1>Mi Rutina</h1>
+        <p>Seguimiento semanal</p>
+      </div>
+
+      <div class="week-box">
+        <label class="label">Semana</label>
+        <select id="weekSelect">
+          <option>Semana 1</option>
+          <option>Semana 2</option>
+          <option>Semana 3</option>
+        </select>
+      </div>
+
+      <div class="nav-box">
+        <button class="day-btn active" data-day="lunes">Lunes</button>
+        <button class="day-btn" data-day="miercoles">Miércoles</button>
+        <button class="day-btn" data-day="viernes">Viernes</button>
+      </div>
+    </aside>
+
+    <main class="content">
+      <h2 id="dayTitle">Lunes</h2>
+      <div id="exerciseList" class="exercise-list"></div>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+// ===== styles.css =====
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: #0f172a;
+  color: white;
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  height: 100vh;
+}
+
+.sidebar {
+  background: #111827;
+  padding: 20px;
+}
+
+.nav-box {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.day-btn {
+  padding: 10px;
+  background: #1f2937;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.day-btn.active {
+  background: #22c55e;
+}
+
+.content {
+  padding: 20px;
+}
+
+.exercise-list {
+  display: grid;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.exercise {
+  background: #1e293b;
+  padding: 15px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background: #111827;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+
+// ===== script.js =====
+const routines = {
+  lunes: [
+    { name: "Sentadilla", video: "https://www.youtube.com/embed/aclHkVaku9U" },
+    { name: "Press banca", video: "https://www.youtube.com/embed/rT7DgCr-3pg" }
+  ],
+  miercoles: [
+    { name: "Peso muerto", video: "https://www.youtube.com/embed/op9kVnSso6Q" }
+  ],
+  viernes: [
+    { name: "Dominadas", video: "https://www.youtube.com/embed/eGo4IYlbE5g" }
+  ]
+};
+
+const exerciseList = document.getElementById("exerciseList");
+const dayTitle = document.getElementById("dayTitle");
+
+function renderDay(day) {
+  exerciseList.innerHTML = "";
+  dayTitle.textContent = day;
+
+  routines[day].forEach(ex => {
+    const div = document.createElement("div");
+    div.className = "exercise";
+    div.textContent = ex.name;
+    div.onclick = () => openModal(ex.video);
+    exerciseList.appendChild(div);
+  });
+}
+
+function openModal(videoUrl) {
+  const modal = document.createElement("div");
+  modal.className = "modal";
+
+  modal.innerHTML = `
+    <div class="modal-content">
+      <iframe width="400" height="250" src="${videoUrl}" frameborder="0" allowfullscreen></iframe>
+    </div>
+  `;
+
+  modal.onclick = () => modal.remove();
+
+  document.body.appendChild(modal);
+}
+
+
+document.querySelectorAll(".day-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".day-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    renderDay(btn.dataset.day);
+  });
+});
+
+renderDay("lunes");
