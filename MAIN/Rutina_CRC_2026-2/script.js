@@ -1,197 +1,10 @@
-const routineData = {
-  dia1: {
-    title: "Día 1",
-    description: "Fuerza de tren inferior, empuje horizontal y trabajo aeróbico.",
-    summary: [
-      "Activación con movilidad de tobillo, cadera, tórax, pallof press y caminata valija.",
-      "Bloques principales con tirones de arranque, sentadilla atrás, pecho plano e hip thrust 1 pierna.",
-      "Accesorios: vuelos laterales, cuello con banda, encogimientos y abdomen barquito.",
-      "Final aeróbico intermitente por pasadas largas."
-    ],
-    blocks: [
-      {
-        name: "Activación",
-        badge: "2 y 3 vueltas",
-        exercises: [
-          { type: "Movilidad", name: "Tobillo en banco + bandas", detail: "x 5 c/l" },
-          { type: "Movilidad", name: "Cadera rotación externa en banco", detail: "x 5 c/l" },
-          { type: "Movilidad", name: "Tórax en banco con bastón", detail: "x 5 c/l" },
-          { type: "Movilidad", name: "Carpa a foca", detail: "x 6" },
-          { type: "Activación", name: "Rechazo escapular con bandas", detail: "x 10" },
-          { type: "Activación", name: "Pallof press con disco", detail: "x 10 c/l" },
-          { type: "Activación", name: "Desaceleración parado freno en estocada", detail: "x 5 c/l" },
-          { type: "Activación", name: "Caminata valija con barra", detail: "x 5 mts c/l" }
-        ]
-      },
-      {
-        name: "Bloque 1",
-        badge: "SCM",
-        exercises: [
-          { type: "EMI", name: "Tirones de arranque desde colgado", week: ["3 x 5", "4 x 5", "5-5-4-4", "4 x 4"] },
-          { type: "TMS", name: "Salto vertical desde sentado", week: ["3 x 4", "4 x 4", "4 x 5", "4 x 5"] },
-          { type: "TMS", name: "Lanzamiento de pecho en básico", week: ["3 x 4", "4 x 4", "4 x 5", "4 x 5"] }
-        ]
-      },
-      {
-        name: "Bloque 2",
-        badge: "Fuerza",
-        exercises: [
-          { type: "EMI", name: "Sentadilla atrás", week: ["3 x 5", "4 x 5", "5-5-4-4", "3 x 4"] },
-          { type: "TMS", name: "Remo bajo a 1 brazo tipo scrum", week: ["3 x 8 c/l", "4 x 8 c/l", "4 x 8 c/l", "3 x 10 c/l"] }
-        ]
-      },
-      {
-        name: "Bloque 3",
-        badge: "Fuerza",
-        exercises: [
-          { type: "TMS", name: "Pecho plano con barra", week: ["3 x 5", "4 x 5", "5-5-4-4", "3 x 4"] },
-          { type: "EMI", name: "Hip thrust 1 pierna", week: ["3 x 6 c/l", "4 x 6 c/l", "6-6-5-5 c/l", "3 x 5 c/l"] }
-        ]
-      },
-      {
-        name: "Bloque 4",
-        badge: "Auxiliares",
-        exercises: [
-          { type: "AUX", name: "Vuelos laterales + cuello con banda", week: ["3 x 8", "4 x 8", "4 x 8", "3 x 10"] },
-          { type: "AUX", name: "Encogimiento con mancuernas", week: ["3 x 8", "4 x 8", "4 x 8", "3 x 10"] },
-          { type: "ZM", name: "Abd barquito con peso", week: ['3 x 20"', '4 x 20"', '4 x 20"', '3 x 25"'] }
-        ]
-      },
-      {
-        name: "Aeróbico",
-        badge: "Intermitente",
-        exercises: [
-          { type: "Cardio", name: 'Correr largo de la cuadra en menos de 20"', week: ["2 x 8", "3 x 6", "3 x 6", "4 x 5"], detail: 'Pausa 30" entre pasadas y 2 min entre series' }
-        ]
-      }
-    ]
-  },
+let routineData = {};
 
-  dia2: {
-    title: "Día 2",
-    description: "Bisagra de cadera, hombro, dominadas y circuito tabata.",
-    summary: [
-      "Activación enfocada en aductores, hombros, psoas y control lumbo-pélvico.",
-      "Bloque principal con cargada, peso muerto, press unilateral y dominadas asistidas.",
-      "Trabajo de trineo, vuelo frontal, Y en TRX y caminata contrapeso.",
-      "Final aeróbico tipo circuito tabata."
-    ],
-    blocks: [
-      {
-        name: "Activación",
-        badge: "2 y 3 vueltas",
-        exercises: [
-          { type: "Movilidad", name: "Movilidad de tobillo en banco inclinado", detail: "x 5 c/l" },
-          { type: "Movilidad", name: "Aductores + rotación de tórax", detail: "x 5 c/l" },
-          { type: "Movilidad", name: "Dislocaciones de hombro con bastón", detail: "x 10" },
-          { type: "Movilidad", name: "Psoas-ilíaco", detail: "x 5 c/l" },
-          { type: "Core", name: "Plancha baja con dos apoyos", detail: 'x 20" c/l' },
-          { type: "Core", name: "Extensión lumbar en banco plano", detail: 'x 30"' },
-          { type: "Core", name: "Plancha Copenhague", detail: 'x 20" c/l' },
-          { type: "Movilidad", name: "Sentadilla profunda + press abajo", detail: "x 10" }
-        ]
-      },
-      {
-        name: "Bloque 1",
-        badge: "SCM",
-        exercises: [
-          { type: "EMI", name: "Cargada desde colgado", week: ["3 x 5", "4 x 5", "5-5-4-4", "4 x 4"] },
-          { type: "TMS", name: "Salto horizontal resistido con banda", week: ["3 x 4", "4 x 4", "4 x 5", "4 x 5"] },
-          { type: "TMS", name: "Lanzamiento horizontal sobre cabeza en básico", week: ["3 x 4", "4 x 4", "4 x 5", "4 x 5"] }
-        ]
-      },
-      {
-        name: "Bloque 2",
-        badge: "Fuerza",
-        exercises: [
-          { type: "EMS", name: "Peso muerto con barra", week: ["3 x 5", "4 x 5", "5-5-4-4", "3 x 4"] },
-          { type: "TMI", name: "Press de hombro con mancuerna en media estocada a 1 brazo", week: ["3 x 8 c/l", "4 x 8 c/l", "4 x 8 c/l", "3 x 10 c/l"] },
-          { type: "TMI", name: "Dominadas asistidas con banda", week: ["3 x MAX", "4 x MAX", "4 x MAX", "3 x MAX"] }
-        ]
-      },
-      {
-        name: "Bloque 3",
-        badge: "Auxiliares",
-        exercises: [
-          { type: "EMS", name: "Trineo de empuje", week: ["3 x 10 mts", "4 x 10 mts", "4 x 10 mts", "3 x 12 mts"] },
-          { type: "AUX", name: "Vuelo frontal", week: ["3 x 8", "4 x 8", "4 x 8", "3 x 10"] },
-          { type: "AUX", name: "Y en TRX", week: ["3 x 8", "4 x 8", "4 x 8", "3 x 10"] },
-          { type: "ZM", name: "Caminata contrapeso", week: ["3 x 10 mts c/l", "4 x 10 mts c/l", "4 x 10 mts c/l", "3 x 12 mts c/l"] }
-        ]
-      },
-      {
-        name: "Aeróbico",
-        badge: "Circuito Tabata",
-        exercises: [
-          { type: "Circuito", name: '20" trabajo x 20" pausa', week: ["3 vueltas", "4 vueltas", "4 vueltas", "5 vueltas"], detail: "Oso, bisagra con disco, pecho al piso, biceps+hombros, monigotes" }
-        ]
-      }
-    ]
-  },
-
-  dia3: {
-    title: "Día 3",
-    description: "Potencia unilateral, torso y bici de velocidad.",
-    summary: [
-      "Activación con cadera, hombro 90/90, escorpión, gigante y puente en TRX.",
-      "Potencia con arranque a 1 brazo, hop lateral y lanzamiento rotacional.",
-      "Trabajo principal de hombro, pecho inclinado, remo y brazos.",
-      "Cierre en bicicleta con pasadas de velocidad."
-    ],
-    blocks: [
-      {
-        name: "Activación",
-        badge: "2 y 3 vueltas",
-        exercises: [
-          { type: "Movilidad", name: "Circunducción de cadera en supino", detail: "x 5 c/l" },
-          { type: "Movilidad", name: "Rotación interna-externa de hombro 90/90", detail: "x 8" },
-          { type: "Movilidad", name: "Escorpión boca abajo", detail: "x 5 c/l" },
-          { type: "Movilidad", name: "Gigante", detail: "x 5 c/l" },
-          { type: "Core", name: "Twist soviético", detail: 'x 30"' },
-          { type: "Activación", name: "Puente de glúteos en TRX", detail: 'x 30"' },
-          { type: "Movilidad", name: "Rolidos con barra", detail: 'x 30"' },
-          { type: "Activación", name: "Marcha en trineo aceleración 45°", detail: "x 10 mts" }
-        ]
-      },
-      {
-        name: "Bloque 1",
-        badge: "Potencia",
-        exercises: [
-          { type: "EMI", name: "Arranque a 1 brazo desde colgado", week: ["3 x 4 c/l", "4 x 4 c/l", "4-4-3-3 c/l", "4 x 3 c/l"] },
-          { type: "TMS", name: "Hop lateral medial", week: ["3 x 4 c/l", "4 x 4 c/l", "4 x 5 c/l", "4 x 5 c/l"] },
-          { type: "TMS", name: "Lanzamiento rotacional desde cadera en básico", week: ["3 x 4 c/l", "4 x 4 c/l", "4 x 5 c/l", "4 x 5 c/l"] }
-        ]
-      },
-      {
-        name: "Bloque 2",
-        badge: "Torso",
-        exercises: [
-          { type: "TMS", name: "Press de hombro con barra parado", week: ["3 x 8", "4 x 8", "4 x 8", "3 x 6"] },
-          { type: "EMI", name: "Remo al mentón con mancuerna", week: ["3 x 8", "4 x 8", "4 x 8", "3 x 10"] },
-          { type: "EMS", name: "Pecho inclinado con mancuerna", week: ["3 x 8", "4 x 8", "4 x 8", "3 x 10"] }
-        ]
-      },
-      {
-        name: "Bloque 3",
-        badge: "Auxiliares",
-        exercises: [
-          { type: "TMI", name: "Remo con mancuernas en banco inclinado", week: ["3 x 8", "4 x 8", "4 x 8", "3 x 10"] },
-          { type: "AUX", name: "Tríceps con mancuerna", week: ["3 x 8", "4 x 8", "4 x 8", "3 x 10"] },
-          { type: "AUX", name: "Bíceps con mancuernas", week: ["3 x 8", "4 x 8", "4 x 8", "3 x 10"] },
-          { type: "ZM", name: "Twist soviético con peso", week: ["3 x 10 c/l", "4 x 10 c/l", "4 x 10 c/l", "3 x 12 c/l"] }
-        ]
-      },
-      {
-        name: "Bicicleta",
-        badge: "Velocidad",
-        exercises: [
-          { type: "Cardio", name: "Pasadas de velocidad", week: ["8 rep", "10 rep", "10 rep", "12 rep"], detail: '10" max vel x 50" suave' }
-        ]
-      }
-    ]
-  }
-};
-
+const monthScreen = document.getElementById("monthScreen");
+const appShell = document.getElementById("appShell");
+const loadError = document.getElementById("loadError");
+const monthButtons = document.querySelectorAll("[data-routine-month]");
+const backToMonths = document.getElementById("backToMonths");
 const weekSelect = document.getElementById("weekSelect");
 const weekChip = document.getElementById("weekChip");
 const summaryList = document.getElementById("summaryList");
@@ -201,10 +14,21 @@ const currentDayDescription = document.getElementById("currentDayDescription");
 const tabs = document.querySelectorAll(".tab");
 
 let currentDay = "dia1";
+let appInitialized = false;
 
 function getWeekValue(exercise, weekNumber) {
   if (!exercise.week) return exercise.detail || "";
   return exercise.week[weekNumber - 1] || "-";
+}
+
+function getBlockTheme(block) {
+  const name = block.name.toLowerCase();
+  const badge = block.badge.toLowerCase();
+
+  if (name.includes("activación")) return "activation";
+  if (name.includes("aeróbico") || name.includes("bicicleta")) return "cardio";
+  if (badge.includes("auxiliares")) return "aux";
+  return "strength";
 }
 
 function renderSummary(dayData) {
@@ -221,23 +45,30 @@ function renderBlocks(dayData, weekNumber) {
 
   dayData.blocks.forEach(block => {
     const blockEl = document.createElement("article");
-    blockEl.className = "block";
+    blockEl.className = `block block--${getBlockTheme(block)}`;
 
-    const exercisesHtml = block.exercises.map(exercise => `
-      <article class="exercise">
-        <div class="exercise-top">
-          <div>
-            <div class="exercise-type">${exercise.type}</div>
-            <h4 class="exercise-name">${exercise.name}</h4>
+    const exercisesHtml = block.exercises.map(exercise => {
+      const detailHtml = exercise.week && exercise.detail
+        ? `<div class="exercise-meta"><span class="pill">${exercise.detail}</span></div>`
+        : "";
+
+      const videoAttrs = exercise.videoId
+        ? ` data-video-id="${exercise.videoId}" role="button" tabindex="0" aria-label="Ver video de ${exercise.name}"`
+        : "";
+
+      return `
+        <article class="exercise${exercise.videoId ? " exercise--video" : ""}"${videoAttrs}>
+          <div class="exercise-top">
+            <div>
+              <div class="exercise-type">${exercise.type}</div>
+              <h4 class="exercise-name">${exercise.name}</h4>
+            </div>
+            <div class="exercise-value">${getWeekValue(exercise, weekNumber)}</div>
           </div>
-          <div class="exercise-value">${getWeekValue(exercise, weekNumber)}</div>
-        </div>
-        <div class="exercise-meta">
-          ${exercise.detail ? `<span class="pill">${exercise.detail}</span>` : ""}
-          <span class="pill">Semana ${weekNumber}</span>
-        </div>
-      </article>
-    `).join("");
+          ${detailHtml}
+        </article>
+      `;
+    }).join("");
 
     blockEl.innerHTML = `
       <div class="block-header">
@@ -253,7 +84,96 @@ function renderBlocks(dayData, weekNumber) {
   });
 }
 
+function openVideoModal(videoId) {
+  const modal = document.getElementById("videoModal");
+  const iframe = document.getElementById("videoFrame");
+
+  iframe.src = `https://www.youtube.com/embed/${videoId}`;
+  modal.classList.add("is-open");
+  modal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("modal-open");
+}
+
+function closeVideoModal() {
+  const modal = document.getElementById("videoModal");
+  const iframe = document.getElementById("videoFrame");
+
+  iframe.src = "";
+  modal.classList.remove("is-open");
+  modal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("modal-open");
+}
+
+function mostrarPantallaInicial() {
+  closeVideoModal();
+  appShell.hidden = true;
+  monthScreen.hidden = false;
+  loadError.textContent = "";
+  window.scrollTo({ top: 0, behavior: "auto" });
+}
+
+function mostrarRutina() {
+  monthScreen.hidden = true;
+  appShell.hidden = false;
+  window.scrollTo({ top: 0, behavior: "auto" });
+}
+
+async function cargarRutina(mes) {
+  try {
+    const response = await fetch(`data/${mes}.json`);
+
+    if (!response.ok) {
+      throw new Error(`No se pudo cargar data/${mes}.json (${response.status})`);
+    }
+
+    routineData = await response.json();
+    return routineData;
+  } catch (error) {
+    console.error("Error al cargar la rutina:", error);
+    throw error;
+  }
+}
+
+async function seleccionarRutina(mes) {
+  const selectedButton = document.querySelector(`[data-routine-month="${mes}"]`);
+  loadError.textContent = "";
+  monthButtons.forEach(button => {
+    button.disabled = true;
+    button.classList.toggle("is-loading", button === selectedButton);
+  });
+
+  try {
+    await cargarRutina(mes);
+
+    if (!appInitialized) {
+      initApp();
+      appInitialized = true;
+    }
+
+    currentDay = "dia1";
+    weekSelect.value = "1";
+    tabs.forEach(tab => {
+      tab.classList.toggle("active", tab.dataset.day === currentDay);
+    });
+    renderDay(currentDay);
+    mostrarRutina();
+  } catch (error) {
+    loadError.textContent = `No se pudo cargar la rutina de ${mes}. Probá de nuevo o verificá que exista data/${mes}.json.`;
+  } finally {
+    monthButtons.forEach(button => {
+      button.disabled = false;
+      button.classList.remove("is-loading");
+    });
+  }
+}
+
 function renderDay(dayKey) {
+  if (!routineData || !routineData[dayKey]) {
+    routineView.innerHTML = "<p class=\"load-error\">No se encontró la información de esta rutina.</p>";
+    summaryList.innerHTML = "";
+    return;
+  }
+
   const weekNumber = Number(weekSelect.value);
   const dayData = routineData[dayKey];
 
@@ -265,17 +185,56 @@ function renderDay(dayKey) {
   renderBlocks(dayData, weekNumber);
 }
 
-tabs.forEach(tab => {
-  tab.addEventListener("click", () => {
-    tabs.forEach(t => t.classList.remove("active"));
-    tab.classList.add("active");
-    currentDay = tab.dataset.day;
+function initApp() {
+  tabs.forEach(tab => {
+    tab.addEventListener("click", () => {
+      tabs.forEach(t => t.classList.remove("active"));
+      tab.classList.add("active");
+      currentDay = tab.dataset.day;
+      renderDay(currentDay);
+    });
+  });
+
+  weekSelect.addEventListener("change", () => {
     renderDay(currentDay);
+  });
+
+  routineView.addEventListener("click", event => {
+    const exercise = event.target.closest("[data-video-id]");
+    if (!exercise) return;
+
+    openVideoModal(exercise.dataset.videoId);
+  });
+
+  routineView.addEventListener("keydown", event => {
+    if (event.key !== "Enter" && event.key !== " ") return;
+
+    const exercise = event.target.closest("[data-video-id]");
+    if (!exercise) return;
+
+    event.preventDefault();
+    openVideoModal(exercise.dataset.videoId);
+  });
+
+  document.getElementById("videoModalClose").addEventListener("click", closeVideoModal);
+
+  document.getElementById("videoModal").addEventListener("click", event => {
+    if (event.target === event.currentTarget) {
+      closeVideoModal();
+    }
+  });
+
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape") {
+      closeVideoModal();
+    }
+  });
+}
+
+monthButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    seleccionarRutina(button.dataset.routineMonth);
   });
 });
 
-weekSelect.addEventListener("change", () => {
-  renderDay(currentDay);
-});
-
-renderDay(currentDay);
+backToMonths.addEventListener("click", mostrarPantallaInicial);
