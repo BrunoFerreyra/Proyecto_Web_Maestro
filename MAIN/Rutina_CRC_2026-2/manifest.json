@@ -3,7 +3,7 @@
   "short_name": "CRC Rutina",
   "display": "standalone",
   "background_color": "#050a16",
-  "theme_color": "#081126",
+  "theme_color": "#080f1f",
   "icons": [
     {
       "src": "/icons/icon-192.png",
