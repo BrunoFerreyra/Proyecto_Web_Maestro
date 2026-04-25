@@ -20,6 +20,9 @@
   --radius-lg: 18px;
   --radius-md: 12px;
   --radius-sm: 9px;
+  --app-header-height: 64px;
+  --sticky-gap: 8px;
+  --sticky-top: calc(var(--app-header-height) + var(--sticky-gap));
 }
 
 * {
@@ -166,43 +169,55 @@ select {
 .topbar {
   position: sticky;
   top: 0;
-  z-index: 30;
+  z-index: 50;
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: auto minmax(0, 1fr) auto;
   align-items: center;
-  gap: 12px;
-  padding: 12px 14px;
+  min-height: var(--app-header-height);
+  gap: 8px;
+  padding: 8px 10px;
   background: rgba(7, 14, 31, 0.88);
   border-bottom: 1px solid var(--line);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(16px);
 }
 
-.topbar::before {
-  content: "";
-  display: block;
-  width: 44px;
-  height: 44px;
-  background: url("logo-crc.png") center / contain no-repeat;
-  filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.38));
+.topbar-brand {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 30px minmax(0, auto);
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  text-align: left;
 }
 
-.topbar-actions {
-  display: grid;
-  justify-items: end;
-  gap: 8px;
+.topbar-brand::before {
+  content: "";
+  display: block;
+  width: 30px;
+  height: 30px;
+  background: url("logo-crc.png") center / contain no-repeat;
+  filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.38));
+  grid-row: 1 / 3;
 }
 
 .back-button {
-  min-height: 36px;
+  justify-self: start;
+  min-height: 42px;
+  max-width: 100%;
+  overflow: hidden;
   color: var(--crc-white);
   background: rgba(255, 255, 255, 0.07);
   border: 1px solid var(--line-strong);
   border-radius: 999px;
-  padding: 7px 11px;
-  font-size: 0.78rem;
+  padding: 8px 10px;
+  font-size: 0.74rem;
   font-weight: 900;
+  line-height: 1.1;
   cursor: pointer;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .back-button:hover {
@@ -215,31 +230,42 @@ select {
 }
 
 .eyebrow {
+  min-width: 0;
   margin: 0 0 2px;
   color: var(--crc-yellow);
-  font-size: 0.68rem;
+  font-size: 0.58rem;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.1em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  grid-column: 2;
 }
 
 .topbar h1 {
+  min-width: 0;
   margin: 0;
-  font-size: clamp(1rem, 4.2vw, 1.2rem);
+  font-size: clamp(0.74rem, 3.2vw, 1.08rem);
   line-height: 1.15;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  grid-column: 2;
 }
 
 .week-chip {
-  min-height: 40px;
+  justify-self: end;
+  min-height: 42px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   background: rgba(226, 14, 23, 0.18);
   border: 1px solid rgba(226, 14, 23, 0.42);
   color: var(--crc-white);
-  padding: 9px 12px;
+  padding: 8px 10px;
   border-radius: 999px;
-  font-size: 0.86rem;
+  font-size: 0.78rem;
   font-weight: 800;
   white-space: nowrap;
 }
@@ -425,13 +451,14 @@ select {
 
 .block {
   overflow: visible;
-  scroll-margin-top: 78px;
+  scroll-margin-top: calc(var(--sticky-top) + 10px);
 }
 
 .block-header {
   position: sticky;
-  top: 68px;
+  top: var(--sticky-top);
   z-index: 20;
+  isolation: isolate;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -440,9 +467,26 @@ select {
   border-bottom: 1px solid var(--block-border, var(--line-strong));
   border-radius: var(--radius-lg) var(--radius-lg) 0 0;
   background:
-    linear-gradient(90deg, var(--block-accent, var(--crc-blue)), transparent 5px),
+    linear-gradient(90deg, var(--block-accent, var(--crc-blue)) 0 5px, var(--block-bg, #13203d) 5px),
     linear-gradient(180deg, var(--block-bg, #13203d), #0c152a);
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.36);
+}
+
+.block-header::before {
+  content: "";
+  position: absolute;
+  left: -1px;
+  right: -1px;
+  top: calc((var(--sticky-gap) + 2px) * -1);
+  height: calc(var(--sticky-gap) + 2px);
+  background: var(--bg);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.block-header > * {
+  position: relative;
+  z-index: 1;
 }
 
 .block-header h3 {
@@ -636,29 +680,45 @@ select {
 }
 
 @media (max-width: 380px) {
-  .topbar {
-    grid-template-columns: auto minmax(0, 1fr) auto;
-    gap: 8px;
+  :root {
+    --app-header-height: 60px;
+    --sticky-gap: 7px;
   }
 
-  .topbar::before {
-    display: block;
-    width: 36px;
-    height: 36px;
-    flex: 0 0 auto;
+  .topbar {
+    gap: 6px;
+    padding-inline: 8px;
+  }
+
+  .topbar-brand {
+    grid-template-columns: 24px minmax(0, auto);
+    gap: 5px;
+  }
+
+  .topbar-brand::before {
+    width: 24px;
+    height: 24px;
   }
 
   .eyebrow {
-    font-size: 0.6rem;
+    font-size: 0.5rem;
+    letter-spacing: 0.06em;
   }
 
   .topbar h1 {
-    font-size: 0.94rem;
+    font-size: 0.66rem;
+  }
+
+  .back-button {
+    min-height: 40px;
+    padding-inline: 8px;
+    font-size: 0.68rem;
   }
 
   .week-chip {
-    padding-inline: 10px;
-    font-size: 0.78rem;
+    min-height: 40px;
+    padding-inline: 8px;
+    font-size: 0.72rem;
   }
 
   .exercise-top {
@@ -681,8 +741,31 @@ select {
 }
 
 @media (min-width: 768px) {
+  :root {
+    --app-header-height: 72px;
+    --sticky-gap: 10px;
+  }
+
   .topbar {
+    padding-block: 10px;
     padding-inline: max(22px, calc((100vw - 1120px) / 2));
+  }
+
+  .topbar-brand {
+    grid-template-columns: 40px minmax(0, auto);
+    gap: 10px;
+  }
+
+  .topbar-brand::before {
+    width: 40px;
+    height: 40px;
+  }
+
+  .back-button,
+  .week-chip {
+    min-height: 44px;
+    padding-inline: 14px;
+    font-size: 0.84rem;
   }
 
   .container {
@@ -708,15 +791,14 @@ select {
 
   .summary-card {
     position: sticky;
-    top: 90px;
+    top: var(--sticky-top);
   }
 
   .block {
-    scroll-margin-top: 96px;
+    scroll-margin-top: calc(var(--sticky-top) + 12px);
   }
 
   .block-header {
-    top: 82px;
     padding: 12px 15px;
   }
 
